@@ -1,0 +1,46 @@
+# -----------------------------------------------------------------
+#                        Relational Model
+# -----------------------------------------------------------------
+
+Patients(ssid, fname, lname, sex, dob, address, weight, height, phone)
+PK(id)
+
+Labtest_Catalog(id, exam, test)
+PK(id)
+
+# Instance of labtest
+Labtests(id, test_id, date, patient_id, doctor_id)
+PK(id)
+FK(test_id) references Labtest_Catalog(id)
+FK(patient_id) references patients(ssid)
+FK(doctor_id) references Doctors(id)
+
+Results(id, parameter, value, min, max, comments, labtest_id)
+PK(id)
+FK(labtest_id) references Labtests(id)
+
+Visits(id, date, patient_id, doctor_id, comments)
+PK(id)
+FK(patient_id) references patients(ssid)
+FK(doctor_id) references Doctors(id)
+
+Doctors(id, fname, lname, cedula, address, office_location, phone, field)
+PK(id)
+
+Medicine_Catalog(id, generic_name, commercial_name, manufacturer, unit_price, qpu) #qpu = quanity per unit
+PK(id)
+
+Prescriptions(id, date, visit_id)
+PK(id)
+FK(visit_id) references Visits(id)
+
+Prescription_Details(id, start_date, end_date, dosage, indications, medicine_id, prescription_id)
+PK(id)
+FK(medicine_id) references Medicine_Catalog(id)
+FK(prescription_id) references Prescriptions(id)
+
+# Further indications
+Prescription_Indications(id, comments, prescription_id)
+PK(id)
+FK(prescription_id) references Prescriptions(id)
+
