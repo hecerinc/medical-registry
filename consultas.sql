@@ -4,7 +4,7 @@
 # 	
 #
 #	1. Fork the repo
-#   2. Add your queries here
+#	2. Add your queries here
 #	3. Create pull request
 # ---------------------------------------------
 
