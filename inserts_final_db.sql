@@ -1,19 +1,19 @@
 --# Doctores
 INSERT INTO doctors(id, fname, lname, cedula, address, office_location, phone, field) VALUES
-(12, 'Jose', 'Gonzalez', 289147014,'271 Miguel Hidalgo, Monterrey','Doctors Hospital', '81712583627', 'Cardiology'),
-(45, 'Juan', 'Gutiérrez', 2808025805,'313 Constitución, Monterrey', 'Hospital San Jose','87351657823', 'Pediatrist'),
-(07, 'Eugenio', 'Rangel',480602866, '271 Miguel Hidalgo, Monterrey','Doctors Hospital', '81712583627', 'Ginecology'),
-(01, 'Pedro', 'Cazares', 258068022,'111 Ignacio Allende, Monterrey','Hospital San Jose', '81752383447', 'Neurology'),
-(99, 'Pedro', 'Cazares', 870304803,'222 Calle Zaragoza, Monterrey', 'Hospital San Jose','81752383453', 'Podology');
+(12, 'Jose', 'Gonzalez', 289147,'271 Miguel Hidalgo, Monterrey','Doctors Hospital', '81712583627', 'Cardiology'),
+(45, 'Juan', 'Gutiérrez',2808025,'313 Constitución, Monterrey', 'Hospital San Jose','87351657823', 'Pediatrist'),
+(07, 'Eugenio', 'Rangel',480602, '271 Miguel Hidalgo, Monterrey','Doctors Hospital', '81712583627', 'Ginecology'),
+(01, 'Pedro', 'Cazares', 258068,'111 Ignacio Allende, Monterrey','Hospital San Jose', '81752383447', 'Neurology'),
+(99, 'Pedro', 'Cazares', 870304,'222 Calle Zaragoza, Monterrey', 'Hospital San Jose','81752383453', 'Podology');
  
 --#Patient
 
 INSERT INTO patients(ssid, fname, lname, sex, dob, address, weight, height, phone) VALUES
-(183018031,'Martin','Murillo','M', '1980-02-23','Main Street 253', 60.2, 1.67, '81190817508'),
-(802850253,'Luis','Romo','M', '1980-02-23','Revolution 863',  60.2, 1.67, '81190817508'),
-(280580223, 'Gabriela', 'Navarro', 'F', '1995-08-17','Cumbres 103', 60.2, 1.67, '81190817508'),
-(106960860,'Edgar','Alanis','M', '1980-02-23', 'Columbus 962',60.2, 1.67, '81190817508'),
-(168028492,'Ninfa','Garza','F', '1995-08-17','Country 524', 60.2, 1.67, '81190817508');
+(183018,'Martin','Murillo','M', '1980-02-23','Main Street 253', 60.2, 1.67, '81190817508'),
+(802850,'Luis','Romo','M', '1980-02-23','Revolution 863',  60.2, 1.67, '81190817508'),
+(280580, 'Gabriela', 'Navarro', 'F', '1995-08-17','Cumbres 103', 60.2, 1.67, '81190817508'),
+(106960,'Edgar','Alanis','M', '1980-02-23', 'Columbus 962',60.2, 1.67, '81190817508'),
+(168028,'Ninfa','Garza','F', '1995-08-17','Country 524', 60.2, 1.67, '81190817508');
  
 --# Medicina
  INSERT INTO medicine_catalog (id, generic_name, commercial_name, manufacturer, unit_price, qpu) VALUES
@@ -25,11 +25,11 @@ INSERT INTO patients(ssid, fname, lname, sex, dob, address, weight, height, phon
 
 --#Visits
 INSERT INTO visits(id, date, comments, patient_id, doctor_id) VALUES
-(108, '2015-08-19', 'El paciente tiene dolor de cabeza', 183018031, 12),
-(186, '2015-09-11', 'El paciente sufre de dolor de espalda', 802850253, 45),
-(067, '2015-04-20', 'La paciente sufre de alergias', 280580223, 07),
-(003, '2014-12-22', 'El paciente tiene la garganta inflamada', 106960860, 01),
-(099, '2015-07-07', 'La paciente tiene la nariz tapada', 168028492, 99);
+(108, '2015-08-19', 'El paciente tiene dolor de cabeza', 183018, 12),
+(186, '2015-09-11', 'El paciente sufre de dolor de espalda', 802850, 45),
+(067, '2015-04-20', 'La paciente sufre de alergias', 280580, 07),
+(003, '2014-12-22', 'El paciente tiene la garganta inflamada', 106960, 01),
+(099, '2015-07-07', 'La paciente tiene la nariz tapada', 168028, 99);
 
 --#Prescription
 INSERT INTO prescriptions(id, DATE, visit_id) VALUES
@@ -63,11 +63,11 @@ INSERT INTO labtest_catalog(id, exam, test) VALUES
 (5, 'Biometria Hematica Compelta', 'Basofilos (%)');
 
 INSERT INTO labtests(id, test_id, date, patient_id, doctor_id) VALUES
-(1, 1, '2015-11-16', 280580223, 12),
-(2, 4, '2015-11-16', 106960860, 45),
-(3, 5, '2015-08-27', 168028492, 7),
-(4, 2, '2014-04-15', 183018031, 1),
-(5, 3, '2015-02-22', 183018031, 99);
+(1, 1, '2015-11-16', 280580, 12),
+(2, 4, '2015-11-16', 106960, 45),
+(3, 5, '2015-08-27', 168028, 7),
+(4, 2, '2014-04-15', 183018, 1),
+(5, 3, '2015-02-22', 183018, 99);
 
 INSERT INTO results(id, parameter, value, min, max, comments, labtest_id) VALUES
 (1, 'Globulos blancos', 13.04, 4.5,10.5, NULL, 1),

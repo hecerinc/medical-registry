@@ -1,4 +1,5 @@
 CREATE DATABASE med_registry;
+GO
 USE med_registry;
 GO
 CREATE TABLE patients(
