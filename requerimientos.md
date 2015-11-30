@@ -38,10 +38,10 @@ Tabla de contenido
 Para cada reporte
     Incluir el SQL que lo genera
     Incluir printscreen de la salida del query
-
+    
 9. Descripcion de la tecnologia utilizada para desarrollar el prototipo
-   Incluir un ejemplo de codigo para:
-   - una inserción a la base de datos
+	Incluir un ejemplo de codigo para:
+	- una inserción a la base de datos
    
   
 Anexos
