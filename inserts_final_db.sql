@@ -75,3 +75,16 @@ INSERT INTO results(id, parameter, value, min, max, comments, labtest_id) VALUES
 (3, 'Monocitos (%)', 5.14, 1, 13, NULL, 3),
 (4, 'Eosinofilos (%)',1.9,0,7,NULL, 4),
 (5, 'Basofilos (%)', 0.7,0,3, NULL, 5);
+
+
+INSERT INTO results(id, parameter, value, min, max, comments, labtest_id) VALUES
+(1, 'Globulos blancos', 13.04, 4.5,10.5, NULL, 1),
+(2, 'Linfocitos (%)', 4.4,13,48, NULL, 2),
+(3, 'Monocitos (%)', 5.14, 1, 13, NULL, 3),
+(4, 'Eosinofilos (%)',1.9,0,7,NULL, 4),
+(5, 'Basofilos (%)', 0.7,0,3, NULL, 5)
+(6, 'Neutrofilos', 88.2, 36, 74, NULL, 4)
+(7, 'Cetonas', 15, 0, 2.8, NULL, 4)
+(8, 'Glucosa', 119, 70, 100, NULL, 4)
+(9, 'Plaquetas', 266, 140, 400, NULL, 4)
+(10, 'Hematocrito', 42.8, 41, 53, NULL, 4);
