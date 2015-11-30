@@ -1,5 +1,6 @@
-CREATE DATABASE `med_registry`;
-USE `med_registry`;
+CREATE DATABASE med_registry;
+USE med_registry;
+GO
 CREATE TABLE patients(
 	ssid INT NOT NULL,
 	fname VARCHAR(255),
