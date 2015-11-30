@@ -17,10 +17,6 @@ SELECT date, exam, test FROM patients JOIN labtests ON patients.ssid = labtests.
 SELECT date, fname, lname, parameter, value, min, max, comments FROM labtests JOIN results ON labtest_id = labtests.id JOIN patients ON patient_id = patients.ssid WHERE labtests.id = 2;
 
 /* Eugenio */
-SELECT fname, lname, doctors.FIELD, exam, office_location, phone, address
-FROM doctors JOIN labtests ON doctors.id= labtests.doctor_id
-JOIN labtest_catalog ON labtests.test_id= labtest_catalog.id
-WHERE fname='Eugenio' AND lname='Rangel'
 
 --Catalogo de prescriptines con detalles e indicaciones para una visita en particular 
 SELECT 
