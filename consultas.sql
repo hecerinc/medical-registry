@@ -36,6 +36,7 @@ FROM prescriptions p JOIN details d ON p.id= d.prescription_id
 JOIN medicine_catalog m ON d.medicine_id= m.id
 JOIN indications i ON p.id= i.prescription_id 
 JOIN visits v ON v.id= p.visit_id
+WHERE v.id=108
 Order BY v.date ASC;
 
 -- Prescripciones de Martin Murillo (un paciente)
