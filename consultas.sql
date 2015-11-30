@@ -17,6 +17,26 @@ SELECT date, exam, test FROM patients JOIN labtests ON patients.ssid = labtests.
 SELECT date, fname, lname, parameter, value, min, max, comments FROM labtests JOIN results ON labtest_id = labtests.id JOIN patients ON patient_id = patients.ssid WHERE labtests.id = 2;
 
 /* Eugenio */
+SELECT fname, lname, doctors.FIELD, exam, office_location, phone, address
+FROM doctors JOIN labtests ON doctors.id= labtests.doctor_id
+JOIN labtest_catalog ON labtests.test_id= labtest_catalog.id
+WHERE fname='Eugenio' AND lname='Rangel'
+
+--Catalogo de prescriptines con detalles e indicaciones para una visita en particular 
+SELECT 
+v.date as 'Fecha de Cita',
+m.commercial_name as 'Medicina',
+d.dosage as 'Dosis',
+d.indications as 'Indicaciones',
+i.comments as 'Comentario adicionales',
+m.unit_price as 'Precio',
+d.start_date as 'Fecha inicio', 
+d.end_date as 'Fecha final'
+FROM prescriptions p JOIN details d ON p.id= d.prescription_id
+JOIN medicine_catalog m ON d.medicine_id= m.id
+JOIN indications i ON p.id= i.prescription_id 
+JOIN visits v ON v.id= p.visit_id
+Order BY v.date ASC;
 
 
 -- Prescripciones de Martin Murillo (un paciente)
@@ -55,6 +75,8 @@ de.dosage as 'Dosis'
 from medicine_catalog m join details de 
 on m.id = de.medicine_id
 order by m.unit_price DESC;
+
+
 
 
 
