@@ -10,17 +10,32 @@
 
 
 /* Hector */
--- Examenes de un paciente 
-SELECT date, exam, test FROM patients JOIN labtests ON patients.ssid = labtests.patient_id JOIN labtest_catalog ON labtests.test_id = labtest_catalog.id WHERE ssid = 280580223;
+/*
+	Reporte de historial de examenes de un paciente
+
+	El reporte que genera es un historial de los examenes que se ha realizado un paciente arbitrario junto con la fecha
+	Este listado es pertinenete para el doctor puesto que puede ver los exámenes que un paciente se ha realizado lo cual puede ayudar a diagnosticar una condición
+	Dependiendo del mal que lo aqueja, puede ver el tipo de examen que arrojaría resultados que pudieran indicar una condición
+*/
+SELECT date, exam, test
+FROM patients 
+	JOIN labtests ON patients.ssid = labtests.patient_id 
+	JOIN labtest_catalog ON labtests.test_id = labtest_catalog.id 
+WHERE ssid = 280580223;
 
 -- Resultados de un examen
-SELECT date, fname, lname, parameter, value, min, max, comments FROM labtests JOIN results ON labtest_id = labtests.id JOIN patients ON patient_id = patients.ssid WHERE labtests.id = 2;
+/*
+	Reporte de resultados de un examen específico
+
+	El reporte de los resultados de un examen de laboratorio incluye los datos del paciente, los parámetros evaluados en el examen, el valor del parámetro, valores máximos y mínimos de referencia y comentarios adicionales del laboratorio o doctor. Esto es pertinente para el doctor para diagnosticar una condición de acuerdo a un parámetro, proveyendo valores de referencia para facilitar el diagnóstico.
+*/
+SELECT date, fname, lname, parameter, value, min, max, comments 
+FROM labtests 
+	JOIN results ON labtest_id = labtests.id 
+	JOIN patients ON patient_id = patients.ssid 
+WHERE labtests.id = 2;
 
 /* Eugenio */
-SELECT fname, lname, doctors.FIELD, exam, office_location, phone, address
-FROM doctors JOIN labtests ON doctors.id= labtests.doctor_id
-JOIN labtest_catalog ON labtests.test_id= labtest_catalog.id
-WHERE fname='Eugenio' AND lname='Rangel'
 
 --Catalogo de prescriptines con detalles e indicaciones para una visita en particular 
 SELECT 
@@ -38,6 +53,7 @@ JOIN indications i ON p.id= i.prescription_id
 JOIN visits v ON v.id= p.visit_id
 WHERE v.id=108
 Order BY v.date ASC;
+
 
 -- Prescripciones de Martin Murillo (un paciente)
 SELECT fname, lname, dob, commercial_name, dosage, indications

@@ -1,3 +1,26 @@
+El doctor debe de poder ver el listado de pacientes
+El doctor debe de poder ver historial de labs del paciente
+El doctor debe de poder ver los resultados de un labtest
+
+El doctor debe de poder consultar catalogo de medicinas
+El doctor debe de poder agregar medicinas al catalogo
+El doctor debe de poder editar medicinas del catalogo
+El doctor debe de poder ver los detalles de las medicinas del catalogo
+El doctor debe de poder borrar medicinas del catalogo
+
+CRUD de medicinas
+
+
+
+CRUD de pacientes
+CRUD de labtests
+CRUD de resultados
+CRUD de visitas
+CRUD de prescripciones
+CRUD de doctors
+
+## Reportes
+
 Title Page
 Table of contents
 
@@ -15,10 +38,10 @@ Tabla de contenido
 Para cada reporte
     Incluir el SQL que lo genera
     Incluir printscreen de la salida del query
-
+    
 9. Descripcion de la tecnologia utilizada para desarrollar el prototipo
-   Incluir un ejemplo de codigo para:
-   - una inserción a la base de datos
+	Incluir un ejemplo de codigo para:
+	- una inserción a la base de datos
    
   
 Anexos
@@ -48,5 +71,3 @@ Generar todos los reportes solicitados
 
 Reportes:
   Todos los reportes deben de ejecutar en el prototipo
-
-  Examennes que 
