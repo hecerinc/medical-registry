@@ -18,6 +18,7 @@ SELECT date, fname, lname, parameter, value, min, max, comments FROM labtests JO
 
 /* Eugenio */
 
+
 -- Prescripciones de Martin Murillo (un paciente)
 SELECT fname, lname, dob, commercial_name, dosage, indications
 FROM patients JOIN visits ON patients.ssid= visits.patient_id
