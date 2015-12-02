@@ -9,8 +9,6 @@ CREATE TABLE patients(
 	sex CHAR(1),
 	dob DATE,
 	address TEXT,
-	weight FLOAT,
-	height FLOAT,
 	phone VARCHAR(255),
 	PRIMARY KEY(ssid)
 );
@@ -50,6 +48,8 @@ CREATE TABLE visits(
 	comments TEXT,
 	patient_id INT NOT NULL,
 	doctor_id INT NOT NULL,
+	weight FLOAT,
+	height FLOAT,
 	PRIMARY KEY(id),
 	FOREIGN KEY(patient_id) REFERENCES patients(ssid),
 	FOREIGN KEY(doctor_id) REFERENCES doctors(id)
