@@ -1,19 +1,32 @@
 --# Doctores
 INSERT INTO doctors(id, fname, lname, cedula, address, office_location, phone, field) VALUES
-(12, 'Jose', 'Gonzalez', 289147,'271 Miguel Hidalgo, Monterrey','Doctors Hospital', '81712583627', 'Cardiology'),
-(45, 'Juan', 'Gutiérrez',2808025,'313 Constitución, Monterrey', 'Hospital San Jose','87351657823', 'Pediatrist'),
-(07, 'Eugenio', 'Rangel',480602, '271 Miguel Hidalgo, Monterrey','Doctors Hospital', '81712583627', 'Ginecology'),
-(01, 'Pedro', 'Cazares', 258068,'111 Ignacio Allende, Monterrey','Hospital San Jose', '81752383447', 'Neurology'),
-(99, 'Pedro', 'Cazares', 870304,'222 Calle Zaragoza, Monterrey', 'Hospital San Jose','81752383453', 'Podology');
+(12, 'Jose', 'Gonzalez', 289147014,'271 Miguel Hidalgo, Monterrey','Doctors Hospital', '81712583627', 'Cardiology'),
+(45, 'Juan', 'Gutiérrez', 2808025805,'313 Constitución, Monterrey', 'Hospital San Jose','87351657823', 'Pediatrist'),
+(07, 'Eugenio', 'Rangel',480602866, '271 Miguel Hidalgo, Monterrey','Doctors Hospital', '81712583627', 'Ginecology'),
+(01, 'Pedro', 'Cazares', 258068022,'111 Ignacio Allende, Monterrey','Hospital San Jose', '81752383447', 'Neurology'),
+(99, 'Pedro', 'Cazares', 870304803,'222 Calle Zaragoza, Monterrey', 'Hospital San Jose','81752383453', 'Podology'),
+(89, 'Lucia', 'Medrano', 849334876, '432 Avenida del sol, Monterrey', 'Hospital San Jose', '8132775849', 'Cardiology'),
+(55, 'Sofia', 'Torres', 387635629, '121 Colonia Roma, Monterrey', 'Hospital Zambrano Helion', '8154773248', 'Optometry'),
+(79, 'Lena', 'Mazza', 784938443, '35 Garza Sada, Monterrey', 'Hospital Zambrano Helion', '8145785989', 'Dermatology'),
+(69, 'Maria', 'Fernandez', 8392754434, '123 Privada Margarita, Monterrey', 'Hospital San Jose', '811789875','Gastroenterology');
  
 --#Patient
 
+#Patient
 INSERT INTO patients(ssid, fname, lname, sex, dob, address, weight, height, phone) VALUES
-(183018,'Martin','Murillo','M', '1980-02-23','Main Street 253', 60.2, 1.67, '81190817508'),
-(802850,'Luis','Romo','M', '1980-02-23','Revolution 863',  60.2, 1.67, '81190817508'),
-(280580, 'Gabriela', 'Navarro', 'F', '1995-08-17','Cumbres 103', 60.2, 1.67, '81190817508'),
-(106960,'Edgar','Alanis','M', '1980-02-23', 'Columbus 962',60.2, 1.67, '81190817508'),
-(168028,'Ninfa','Garza','F', '1995-08-17','Country 524', 60.2, 1.67, '81190817508');
+(183018031, 'Martin', 'Murillo','M', '1980-02-23','Main Street 253', 60.2, 1.67, '81190817508'),
+(802850253, 'Luis', 'Romo','M', '1980-02-23','Revolution 863',  60.2, 1.67, '81190817508'),
+(280580223, 'Gabriela', 'Navarro', 'F', '1995-08-17','Cumbres 103', 60.2, 1.67, '81190817508'),
+(106960860, 'Edgar', 'Alanis','M', '1980-02-23', 'Columbus 962',60.2, 1.67, '81190817508'),
+(168028492, 'Ninfa', 'Garza','F', '1995-08-17','Country 524', 60.2, 1.67, '81190817508'),
+(574835467, 'Ricardo', 'Froto','M', '1978-03-12', 'Colonia Nevada 1830', 70.0, 1.78, '8113245869'),
+(493049584, 'Carla', 'Canseco', 'F', '1992-02-22', 'Lomas del Mirador 219', 59.4, 1.70, '814549695'),
+(432594832, 'Valeria', 'Martinez', 'F', '1992-04-04' 'Lazaro Cardena 4000', 58.3, 1.71, '8115772349'),
+(384930203, 'Emilia', 'Guzman', 'F', '1988-05-10', 'Sierra Nevada 45', 59.3, 1.72, '8113485211'),
+(438293492, 'Carolina', 'Marcos', 'F', '1974-12-12', 'Palo Blanco 82', 55.4, 1.68, '815644392'),
+(123492334, 'Pedro', 'Iga', 'M', '1993-01-23', 'San Agustin 432', 70.4, 1.77, '8145334289')
+(198463211, 'Raul', 'Vela', 'M', '1969-06-09', 'Bosques del Valle 103', 79.7, 1.76, '8143258639;');
+ 
  
 --# Medicina
  INSERT INTO medicine_catalog (id, generic_name, commercial_name, manufacturer, unit_price, qpu) VALUES
@@ -21,7 +34,12 @@ INSERT INTO patients(ssid, fname, lname, sex, dob, address, weight, height, phon
 (2, 'Acetaminophen','Tylenol Extra Strength', 'McNeil', 14.99, 15),
 (3, 'Ibuprofen','Advil Tablets', 'Novartis', 19.99, 25),
 (4, 'Aspirin','Genuine Bayer Aspirin', 'Bayer', 8.99, 20),
-(5, 'Oxymetazoline nasal','Afrin 12 Hours', 'Bayer', 5.99, 15);
+(5, 'Oxymetazoline nasal','Afrin 12 Hours', 'Bayer', 5.99, 15),
+(6, 'Methylphenidate', 'Concerta', 'Johnson & Johnson', 89.99, 30),
+(7, 'Alprazolam', 'Xanax', 'Pfizer', 22.99, 90),
+(8, 'Azithromycin', 'Zithromax', 'Pfizer', 13.99, 6),
+(9, 'Acetaminophen', 'Vicodin', 'Abbvie', 189.99, 100),
+(10, 'Hydrocodone', 'Hysingla ER', 'Purdue', 426.89, 60);
 
 --#Visits
 INSERT INTO visits(id, date, comments, patient_id, doctor_id) VALUES
