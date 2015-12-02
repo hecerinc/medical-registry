@@ -21,11 +21,11 @@ INSERT INTO patients(ssid, fname, lname, sex, dob, address, weight, height, phon
 (168028492, 'Ninfa', 'Garza','F', '1995-08-17','Country 524', '81190817508'),
 (574835467, 'Ricardo', 'Froto','M', '1978-03-12', 'Colonia Nevada 1830','8113245869'),
 (493049584, 'Carla', 'Canseco', 'F', '1992-02-22', 'Lomas del Mirador 219','814549695'),
-(432594832, 'Valeria', 'Martinez', 'F', '1992-04-04' 'Lazaro Cardena 4000','8115772349'),
+(432594832, 'Valeria', 'Martinez', 'F', '1992-04-04', 'Lazaro Cardena 4000','8115772349'),
 (384930203, 'Emilia', 'Guzman', 'F', '1988-05-10', 'Sierra Nevada 45','8113485211'),
 (438293492, 'Carolina', 'Marcos', 'F', '1974-12-12', 'Palo Blanco 82','815644392'),
-(123492334, 'Pedro', 'Iga', 'M', '1993-01-23', 'San Agustin 432','8145334289')
-(198463211, 'Raul', 'Vela', 'M', '1969-06-09', 'Bosques del Valle 103','8143258639;');
+(123492334, 'Pedro', 'Iga', 'M', '1993-01-23', 'San Agustin 432','8145334289'),
+(198463211, 'Raul', 'Vela', 'M', '1969-06-09', 'Bosques del Valle 103','8143258639');
  
  
 --# Medicina
