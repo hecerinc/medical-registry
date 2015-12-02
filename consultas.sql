@@ -37,31 +37,61 @@ WHERE labtests.id = 2;
 
 /* Eugenio */
 
---Catalogo de prescriptines con detalles e indicaciones para una visita en particular 
+--Catalogo de prescripciones con detalles e indicaciones para una visita en particular 
 SELECT 
-v.date as 'Fecha de Cita',
-m.commercial_name as 'Medicina',
-d.dosage as 'Dosis',
-d.indications as 'Indicaciones',
-i.comments as 'Comentario adicionales',
-m.unit_price as 'Precio',
-d.start_date as 'Fecha inicio', 
-d.end_date as 'Fecha final'
-FROM prescriptions p JOIN details d ON p.id= d.prescription_id
-JOIN medicine_catalog m ON d.medicine_id= m.id
-JOIN indications i ON p.id= i.prescription_id 
-JOIN visits v ON v.id= p.visit_id
+	v.date as 'Fecha de Cita',
+	m.commercial_name as 'Medicina',
+	d.dosage as 'Dosis',
+	d.indications as 'Indicaciones',
+	i.comments as 'Comentario adicionales',
+	m.unit_price as 'Precio',
+	d.start_date as 'Fecha inicio', 
+	d.end_date as 'Fecha final'
+FROM prescriptions p 
+	JOIN details d ON p.id= d.prescription_id
+	JOIN medicine_catalog m ON d.medicine_id= m.id
+	JOIN indications i ON p.id= i.prescription_id 
+	JOIN visits v ON v.id= p.visit_id
 WHERE v.id=108
-Order BY v.date ASC;
+ORDER BY v.date ASC;
 
 
--- Prescripciones de Martin Murillo (un paciente)
-SELECT fname, lname, dob, commercial_name, dosage, indications
-FROM patients JOIN visits ON patients.ssid= visits.patient_id
-JOIN prescriptions ON visits.id= prescriptions.visit_id
-JOIN details ON prescriptions.id= details.prescription_id
-JOIN medicine_catalog ON details.medicine_id= medicine_catalog.id
+-- TODO
+-- RECETAS EN UN ANO
+-- Todas las prescripciones (recetas) (un paciente)
+SELECT 
+	fname as 'Nombre',
+	lname as 'Apellido',
+	dob as 'Fecha de Nacimiento',
+	commercial_name as 'Medicamento',
+	generic_name as 'Tipo',
+	dosage as 'Dosis', 
+	indications as 'Indicaciones'
+FROM patients 
+	JOIN visits ON patients.ssid = visits.patient_id
+	JOIN prescriptions ON visits.id = prescriptions.visit_id
+	JOIN details ON prescriptions.id =  details.prescription_id
+	JOIN medicine_catalog ON details.medicine_id=  medicine_catalog.id
 WHERE fname='Martin' AND lname='Murillo';
+
+-- TODO
+-- RECETAS 
+-- Todas las prescripciones (recetas) (un paciente)
+SELECT 
+	fname as 'Nombre',
+	lname as 'Apellido',
+	dob as 'Fecha de Nacimiento',
+	commercial_name as 'Medicamento',
+	generic_name as 'Tipo',
+	dosage as 'Dosis', 
+	indications as 'Indicaciones'
+FROM patients 
+	JOIN visits ON patients.ssid = visits.patient_id
+	JOIN prescriptions ON visits.id = prescriptions.visit_id
+	JOIN details ON prescriptions.id =  details.prescription_id
+	JOIN medicine_catalog ON details.medicine_id=  medicine_catalog.id
+WHERE fname='Martin' AND lname='Murillo';
+
 
 
 /* Hemkes */
@@ -94,6 +124,11 @@ order by m.unit_price DESC;
 
 
 
+select 'Examenes de laboratorio';
+select distinct lc.nombre, fecha
+from patients p join labtests l on p.id = l.idPaciente join results r
+on r.idLabTest = l.id join labtestcatalogs lc on lc.id = l.idLabtestcatalog
+where p.nombre = 'Juan 'and p.apellido = 'Perez';
 
 
 /* Uriel */
