@@ -5,7 +5,10 @@ INSERT INTO doctors(id, fname, lname, cedula, address, office_location, phone, f
 (07, 'Eugenio', 'Rangel',480602866, '271 Miguel Hidalgo, Monterrey','Doctors Hospital', '81712583627', 'Ginecology'),
 (01, 'Pedro', 'Cazares', 258068022,'111 Ignacio Allende, Monterrey','Hospital San Jose', '81752383447', 'Neurology'),
 (99, 'Pedro', 'Cazares', 870304803,'222 Calle Zaragoza, Monterrey', 'Hospital San Jose','81752383453', 'Podology'),
-(89, 'Lucia', 'Medrano', 849334876, '432 Avenida del sol, Monterrey', 'Hospital San Jose', '8132775849', 'Cardiology');
+(89, 'Lucia', 'Medrano', 849334876, '432 Avenida del sol, Monterrey', 'Hospital San Jose', '8132775849', 'Cardiology'),
+(55, 'Sofia', 'Torres', 387635629, '121 Colonia Roma, Monterrey', 'Hospital Zambrano Helion', '8154773248', 'Optometry'),
+(79, 'Lena', 'Mazza', 784938443, '35 Garza Sada, Monterrey', 'Hospital Zambrano Helion', '8145785989', 'Dermatology'),
+(69, 'Maria', 'Fernandez', 8392754434, '123 Privada Margarita, Monterrey', 'Hospital San Jose', '811789875','Gastroenterology');
  
 --#Patient
 
@@ -32,7 +35,11 @@ INSERT INTO patients(ssid, fname, lname, sex, dob, address, weight, height, phon
 (3, 'Ibuprofen','Advil Tablets', 'Novartis', 19.99, 25),
 (4, 'Aspirin','Genuine Bayer Aspirin', 'Bayer', 8.99, 20),
 (5, 'Oxymetazoline nasal','Afrin 12 Hours', 'Bayer', 5.99, 15),
-(6, 'Methylphenidate', 'Concerta', 'Johnson & Johnson', 89.99, 30);
+(6, 'Methylphenidate', 'Concerta', 'Johnson & Johnson', 89.99, 30),
+(7, 'Alprazolam', 'Xanax', 'Pfizer', 22.99, 90),
+(8, 'Azithromycin', 'Zithromax', 'Pfizer', 13.99, 6),
+(9, 'Acetaminophen', 'Vicodin', 'Abbvie', 189.99, 100),
+(10, 'Hydrocodone', 'Hysingla ER', 'Purdue', 426.89, 60);
 
 --#Visits
 INSERT INTO visits(id, date, comments, patient_id, doctor_id) VALUES
