@@ -1,14 +1,14 @@
 --# Doctores
 INSERT INTO doctors(id, fname, lname, cedula, address, office_location, phone, field) VALUES
-(12, 'Jose', 'Gonzalez', 289147014,'271 Miguel Hidalgo, Monterrey','Doctors Hospital', '81712583627', 'Cardiology'),
-(45, 'Juan', 'Gutiérrez', 2808025805,'313 Constitución, Monterrey', 'Hospital San Jose','87351657823', 'Pediatrist'),
-(07, 'Eugenio', 'Rangel',480602866, '271 Miguel Hidalgo, Monterrey','Doctors Hospital', '81712583627', 'Ginecology'),
-(01, 'Pedro', 'Cazares', 258068022,'111 Ignacio Allende, Monterrey','Hospital San Jose', '81752383447', 'Neurology'),
-(99, 'Pedro', 'Cazares', 870304803,'222 Calle Zaragoza, Monterrey', 'Hospital San Jose','81752383453', 'Podology'),
-(89, 'Lucia', 'Medrano', 849334876, '432 Avenida del sol, Monterrey', 'Hospital San Jose', '8132775849', 'Cardiology'),
-(55, 'Sofia', 'Torres', 387635629, '121 Colonia Roma, Monterrey', 'Hospital Zambrano Helion', '8154773248', 'Optometry'),
-(79, 'Lena', 'Mazza', 784938443, '35 Garza Sada, Monterrey', 'Hospital Zambrano Helion', '8145785989', 'Dermatology'),
-(69, 'Maria', 'Fernandez', 8392754434, '123 Privada Margarita, Monterrey', 'Hospital San Jose', '811789875','Gastroenterology');
+(12, 'Jose', 'Gonzalez', 147014,'271 Miguel Hidalgo, Monterrey','Doctors Hospital', '81712583627', 'Cardiology'),
+(45, 'Juan', 'Gutiérrez', 8025805,'313 Constitución, Monterrey', 'Hospital San Jose','87351657823', 'Pediatrist'),
+(07, 'Eugenio', 'Rangel',602866, '271 Miguel Hidalgo, Monterrey','Doctors Hospital', '81712583627', 'Ginecology'),
+(01, 'Pedro', 'Cazares', 068022,'111 Ignacio Allende, Monterrey','Hospital San Jose', '81752383447', 'Neurology'),
+(99, 'Pedro', 'Cazares', 304803,'222 Calle Zaragoza, Monterrey', 'Hospital San Jose','81752383453', 'Podology'),
+(89, 'Lucia', 'Medrano', 334876, '432 Avenida del sol, Monterrey', 'Hospital San Jose', '8132775849', 'Cardiology'),
+(55, 'Sofia', 'Torres', 635629, '121 Colonia Roma, Monterrey', 'Hospital Zambrano Helion', '8154773248', 'Optometry'),
+(79, 'Lena', 'Mazza', 938443, '35 Garza Sada, Monterrey', 'Hospital Zambrano Helion', '8145785989', 'Dermatology'),
+(69, 'Maria', 'Fernandez', 2754434, '123 Privada Margarita, Monterrey', 'Hospital San Jose', '811789875','Gastroenterology');
  
 --#Patient
 
