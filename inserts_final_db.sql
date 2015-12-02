@@ -82,7 +82,7 @@ INSERT INTO results(id, parameter, value, min, max, comments, labtest_id) VALUES
 (2, 'Linfocitos (%)', 4.4,13,48, NULL, 2),
 (3, 'Monocitos (%)', 5.14, 1, 13, NULL, 3),
 (4, 'Eosinofilos (%)',1.9,0,7,NULL, 4),
-(5, 'Basofilos (%)', 0.7,0,3, NULL, 5)
+(5, 'Basofilos (%)', 0.7,0,3, NULL, 5),
 (6, 'Neutrofilos', 88.2, 36, 74, NULL, 4)
 (7, 'Cetonas', 15, 0, 2.8, NULL, 4)
 (8, 'Glucosa', 119, 70, 100, NULL, 4)

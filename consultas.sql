@@ -95,6 +95,30 @@ order by m.unit_price DESC;
 
 
 
+select doctors.fname as 'Nombre',
+doctors.lname as 'Apellido',
+details.id as 'ID de la prescripción',
+details.start_date as 'Fecha de inicio', 
+details.end_date as 'Fecha de fin',
+details.indications as 'Indicaciones'
+from doctors join visits on doctors.id = doctor_id join prescriptions on visits.id = visit_id join details on prescriptions.id = prescription_id
+where doctors.id = 7;
+
+
+
+SELECT fname as 'Nombre',
+lname as 'Apellido',
+dob as 'Fecha de Nacimiento',
+commercial_name as 'Medicamento',
+generic_name as 'Tipo',
+dosage as 'Dosis', 
+indications as 'Indicaciones'
+FROM patients JOIN visits ON patients.ssid= visits.patient_id
+JOIN prescriptions ON visits.id= prescriptions.visit_id
+JOIN details ON prescriptions.id= details.prescription_id
+JOIN medicine_catalog ON details.medicine_id= medicine_catalog.id
+WHERE fname='Martin' AND lname='Murillo';
+
 
 /* Uriel */
 
@@ -108,3 +132,14 @@ where sex = 'F' AND office_location = 'Hospital San Jose';
 select doctors.fname, doctors.lname, details.id, details.start_date, details.end_date, details.indications 
 from doctors join visits on doctors.id = doctor_id join prescriptions on visits.id = visit_id join details on prescriptions.id = prescription_id
 where doctors.id = 07;
+
+
+select  p.fname as 'Nombre Paciente',
+p.lname as 'Apellido Paciente',
+v.comments as 'Diagnostico', 
+d.fname as 'Nombre Doctor',
+d.lname as 'Apellido Doctor' 
+from patients p join visits v 
+on p.ssid = v.patient_id 
+join doctors d on v.doctor_id = d.id 
+WHERE v.date = getdate();
