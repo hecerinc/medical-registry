@@ -14,18 +14,18 @@ INSERT INTO doctors(id, fname, lname, cedula, address, office_location, phone, f
 
 #Patient
 INSERT INTO patients(ssid, fname, lname, sex, dob, address, weight, height, phone) VALUES
-(183018031, 'Martin', 'Murillo','M', '1980-02-23','Main Street 253', 60.2, 1.67, '81190817508'),
-(802850253, 'Luis', 'Romo','M', '1980-02-23','Revolution 863',  60.2, 1.67, '81190817508'),
-(280580223, 'Gabriela', 'Navarro', 'F', '1995-08-17','Cumbres 103', 60.2, 1.67, '81190817508'),
-(106960860, 'Edgar', 'Alanis','M', '1980-02-23', 'Columbus 962',60.2, 1.67, '81190817508'),
-(168028492, 'Ninfa', 'Garza','F', '1995-08-17','Country 524', 60.2, 1.67, '81190817508'),
-(574835467, 'Ricardo', 'Froto','M', '1978-03-12', 'Colonia Nevada 1830', 70.0, 1.78, '8113245869'),
-(493049584, 'Carla', 'Canseco', 'F', '1992-02-22', 'Lomas del Mirador 219', 59.4, 1.70, '814549695'),
-(432594832, 'Valeria', 'Martinez', 'F', '1992-04-04' 'Lazaro Cardena 4000', 58.3, 1.71, '8115772349'),
-(384930203, 'Emilia', 'Guzman', 'F', '1988-05-10', 'Sierra Nevada 45', 59.3, 1.72, '8113485211'),
-(438293492, 'Carolina', 'Marcos', 'F', '1974-12-12', 'Palo Blanco 82', 55.4, 1.68, '815644392'),
-(123492334, 'Pedro', 'Iga', 'M', '1993-01-23', 'San Agustin 432', 70.4, 1.77, '8145334289')
-(198463211, 'Raul', 'Vela', 'M', '1969-06-09', 'Bosques del Valle 103', 79.7, 1.76, '8143258639;');
+(183018031, 'Martin', 'Murillo','M', '1980-02-23','Main Street 253', '81190817508'),
+(802850253, 'Luis', 'Romo','M', '1980-02-23','Revolution 863',  '81190817508'),
+(280580223, 'Gabriela', 'Navarro', 'F', '1995-08-17','Cumbres 103', '81190817508'),
+(106960860, 'Edgar', 'Alanis','M', '1980-02-23', 'Columbus 962','81190817508'),
+(168028492, 'Ninfa', 'Garza','F', '1995-08-17','Country 524', '81190817508'),
+(574835467, 'Ricardo', 'Froto','M', '1978-03-12', 'Colonia Nevada 1830','8113245869'),
+(493049584, 'Carla', 'Canseco', 'F', '1992-02-22', 'Lomas del Mirador 219','814549695'),
+(432594832, 'Valeria', 'Martinez', 'F', '1992-04-04' 'Lazaro Cardena 4000','8115772349'),
+(384930203, 'Emilia', 'Guzman', 'F', '1988-05-10', 'Sierra Nevada 45','8113485211'),
+(438293492, 'Carolina', 'Marcos', 'F', '1974-12-12', 'Palo Blanco 82','815644392'),
+(123492334, 'Pedro', 'Iga', 'M', '1993-01-23', 'San Agustin 432','8145334289')
+(198463211, 'Raul', 'Vela', 'M', '1969-06-09', 'Bosques del Valle 103','8143258639;');
  
  
 --# Medicina
@@ -41,13 +41,23 @@ INSERT INTO patients(ssid, fname, lname, sex, dob, address, weight, height, phon
 (9, 'Acetaminophen', 'Vicodin', 'Abbvie', 189.99, 100),
 (10, 'Hydrocodone', 'Hysingla ER', 'Purdue', 426.89, 60);
 
+
+/*
+ 70.0, 1.78,
+ 59.4, 1.70,
+ 58.3, 1.71,
+ 59.3, 1.72,
+ 55.4, 1.68,
+ 70.4, 1.77,
+ 79.7, 1.76,
+*/
 --#Visits
-INSERT INTO visits(id, date, comments, patient_id, doctor_id) VALUES
-(108, '2015-08-19', 'El paciente tiene dolor de cabeza', 183018, 12),
-(186, '2015-09-11', 'El paciente sufre de dolor de espalda', 802850, 45),
-(067, '2015-04-20', 'La paciente sufre de alergias', 280580, 07),
-(003, '2014-12-22', 'El paciente tiene la garganta inflamada', 106960, 01),
-(099, '2015-07-07', 'La paciente tiene la nariz tapada', 168028, 99);
+INSERT INTO visits(id, date, comments, weight, height, patient_id, doctor_id) VALUES
+(108, '2015-08-19', 'El paciente tiene dolor de cabeza', 60.2, 1.67, 183018, 12),
+(186, '2015-09-11', 'El paciente sufre de dolor de espalda', 60.2, 1.67, 802850, 45),
+(067, '2015-04-20', 'La paciente sufre de alergias', 60.2, 1.67, 280580, 07),
+(003, '2014-12-22', 'El paciente tiene la garganta inflamada', 60.2, 1.67, 106960, 01),
+(099, '2015-07-07', 'La paciente tiene la nariz tapada', 60.2, 1.67, 168028, 99);
 
 --#Prescription
 INSERT INTO prescriptions(id, DATE, visit_id) VALUES
@@ -92,17 +102,9 @@ INSERT INTO results(id, parameter, value, min, max, comments, labtest_id) VALUES
 (2, 'Linfocitos (%)', 4.4,13,48, NULL, 2),
 (3, 'Monocitos (%)', 5.14, 1, 13, NULL, 3),
 (4, 'Eosinofilos (%)',1.9,0,7,NULL, 4),
-(5, 'Basofilos (%)', 0.7,0,3, NULL, 5);
-
-
-INSERT INTO results(id, parameter, value, min, max, comments, labtest_id) VALUES
-(1, 'Globulos blancos', 13.04, 4.5,10.5, NULL, 1),
-(2, 'Linfocitos (%)', 4.4,13,48, NULL, 2),
-(3, 'Monocitos (%)', 5.14, 1, 13, NULL, 3),
-(4, 'Eosinofilos (%)',1.9,0,7,NULL, 4),
 (5, 'Basofilos (%)', 0.7,0,3, NULL, 5),
-(6, 'Neutrofilos', 88.2, 36, 74, NULL, 4)
-(7, 'Cetonas', 15, 0, 2.8, NULL, 4)
-(8, 'Glucosa', 119, 70, 100, NULL, 4)
-(9, 'Plaquetas', 266, 140, 400, NULL, 4)
+(6, 'Neutrofilos', 88.2, 36, 74, NULL, 4),
+(7, 'Cetonas', 15, 0, 2.8, NULL, 4),
+(8, 'Glucosa', 119, 70, 100, NULL, 4),
+(9, 'Plaquetas', 266, 140, 400, NULL, 4),
 (10, 'Hematocrito', 42.8, 41, 53, NULL, 4);
