@@ -17,11 +17,12 @@
 	Este listado es pertinenete para el doctor puesto que puede ver los exámenes que un paciente se ha realizado lo cual puede ayudar a diagnosticar una condición
 	Dependiendo del mal que lo aqueja, puede ver el tipo de examen que arrojaría resultados que pudieran indicar una condición
 */
-SELECT date, exam, test
+SELECT CONCAT(fname, ' ', lname) AS 'Nombre' FROM patients WHERE ssid = 106960;
+SELECT date, exam
 FROM patients 
 	JOIN labtests ON patients.ssid = labtests.patient_id 
 	JOIN labtest_catalog ON labtests.test_id = labtest_catalog.id 
-WHERE ssid = 280580223;
+WHERE ssid = 106960;
 
 -- Resultados de un examen
 /*
@@ -29,7 +30,13 @@ WHERE ssid = 280580223;
 
 	El reporte de los resultados de un examen de laboratorio incluye los datos del paciente, los parámetros evaluados en el examen, el valor del parámetro, valores máximos y mínimos de referencia y comentarios adicionales del laboratorio o doctor. Esto es pertinente para el doctor para diagnosticar una condición de acuerdo a un parámetro, proveyendo valores de referencia para facilitar el diagnóstico.
 */
-SELECT date, fname, lname, parameter, value, min, max, comments 
+SELECT 'Reporte de examen de laboratorio';
+SELECT fname AS 'Nombre', lname AS 'Apellido', date, exam
+FROM patients 
+	JOIN labtests ON labtests.patient_id = patients.ssid
+	JOIN labtest_catalog ON labtest_catalog.id = labtests.test_id
+WHERE labtests.id = 2;
+SELECT parameter as 'Parametro', value as 'Valor', min, max, comments as 'Comentarios'
 FROM labtests 
 	JOIN results ON labtest_id = labtests.id 
 	JOIN patients ON patient_id = patients.ssid 
