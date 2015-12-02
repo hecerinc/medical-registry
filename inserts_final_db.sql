@@ -1,4 +1,4 @@
---# Doctores
+/*  Doctores  */
 INSERT INTO doctors(id, fname, lname, cedula, address, office_location, phone, field) VALUES
 (12, 'Jose', 'Gonzalez', 147014,'271 Miguel Hidalgo, Monterrey','Doctors Hospital', '81712583627', 'Cardiology'),
 (45, 'Juan', 'Gutiérrez', 8025805,'313 Constitución, Monterrey', 'Hospital San Jose','87351657823', 'Pediatrist'),
@@ -10,10 +10,8 @@ INSERT INTO doctors(id, fname, lname, cedula, address, office_location, phone, f
 (79, 'Lena', 'Mazza', 938443, '35 Garza Sada, Monterrey', 'Hospital Zambrano Helion', '8145785989', 'Dermatology'),
 (69, 'Maria', 'Fernandez', 2754434, '123 Privada Margarita, Monterrey', 'Hospital San Jose', '811789875','Gastroenterology');
  
---#Patient
-
-#Patient
-INSERT INTO patients(ssid, fname, lname, sex, dob, address, weight, height, phone) VALUES
+/* Patient */
+INSERT INTO patients(ssid, fname, lname, sex, dob, address, phone) VALUES
 (183018031, 'Martin', 'Murillo','M', '1980-02-23','Main Street 253', '81190817508'),
 (802850253, 'Luis', 'Romo','M', '1980-02-23','Revolution 863',  '81190817508'),
 (280580223, 'Gabriela', 'Navarro', 'F', '1995-08-17','Cumbres 103', '81190817508'),
@@ -28,7 +26,7 @@ INSERT INTO patients(ssid, fname, lname, sex, dob, address, weight, height, phon
 (198463211, 'Raul', 'Vela', 'M', '1969-06-09', 'Bosques del Valle 103','8143258639');
  
  
---# Medicina
+/*  Medicina  */
  INSERT INTO medicine_catalog (id, generic_name, commercial_name, manufacturer, unit_price, qpu) VALUES
 (1, 'Acetaminophen','Excedrin', 'Novartis', 18.99, 30),
 (2, 'Acetaminophen','Tylenol Extra Strength', 'McNeil', 14.99, 15),
@@ -51,7 +49,7 @@ INSERT INTO patients(ssid, fname, lname, sex, dob, address, weight, height, phon
  70.4, 1.77,
  79.7, 1.76,
 */
---#Visits
+/* Visits */
 INSERT INTO visits(id, date, comments, weight, height, patient_id, doctor_id) VALUES
 (108, '2015-08-19', 'El paciente tiene dolor de cabeza', 60.2, 1.67, 183018, 12),
 (186, '2015-09-11', 'El paciente sufre de dolor de espalda', 60.2, 1.67, 802850, 45),
@@ -59,7 +57,7 @@ INSERT INTO visits(id, date, comments, weight, height, patient_id, doctor_id) VA
 (003, '2014-12-22', 'El paciente tiene la garganta inflamada', 60.2, 1.67, 106960, 01),
 (099, '2015-07-07', 'La paciente tiene la nariz tapada', 60.2, 1.67, 168028, 99);
 
---#Prescription
+/* Prescription */
 INSERT INTO prescriptions(id, DATE, visit_id) VALUES
 (564738,'2015-08-19', 108),
 (324527,'2015-09-11', 186),
@@ -67,7 +65,7 @@ INSERT INTO prescriptions(id, DATE, visit_id) VALUES
 (213389,'2014-12-22', 003),
 (463748,'2015-07-07', 099);
 
---#Prescription Details
+/* Prescription Details */
 INSERT INTO details(id, start_date, end_date, dosage, indications, medicine_id, prescription_id) VALUES
 (1, '2015-08-19', '2015-09-04', '2 pastillas','Tomar 1 en la mañana y otra en la tarde', 1, 564738),
 (2, '2015-09-11', '2015-10-11', '1 pastilla', 'Tomarse 1 en la mañana', 2, 324527),
@@ -75,7 +73,7 @@ INSERT INTO details(id, start_date, end_date, dosage, indications, medicine_id, 
 (4, '2014-12-22', '2014-12-31', '3 pastillas', '1 en la mañana, otra a medio dia, 1 en la tarde', 4, 213389),
 (5, '2015-07-07', '2015-07-12', '1 aprieto', 'Ingerir antes del medio dia', 5, 463748);
 
---#Prescription Indications
+/* Prescription Indications */
 INSERT INTO indications(id, comments, prescription_id) VALUES
 (1, 'Esperarse 6 horas antes de tomarse la otra pastilla', 564738),
 (2, 'No tomarse mas de 1 pastilla al dia', 324527),
