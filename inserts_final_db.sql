@@ -87,7 +87,7 @@ INSERT INTO details(id, start_date, end_date, dosage, indications, medicine_id, 
 (5, '2015-07-07', '2015-07-12', '1 aprieto', 'Ingerir antes del medio dia', 5, 463748),
 (6, '2015-04-30','2015-05-10', '2 pastillas', '1 cada 12 horas', 6, 231445),
 (7, '2014-12-04','2014-12-14', '1 pastilla', 'Tomar una al medio dia', 10, 989431),
-(8,'2015-03-21','2015-04-06', '3 pastillas' 'Tomar una cada 8 horas', 9, 291774),
+(8,'2015-03-21','2015-04-06', '3 pastillas', 'Tomar una cada 8 horas', 9, 291774),
 (9,'2015-11-08','2015-11-18', '3 gotas', 'Tomar una antes de comer', 5, 637452),
 (10,'2015-11-08','2015-11-28', '1/2 pastilla', 'Tomar una cada 12 horas', 7, 637452),
 (11,'2015-08-08', '2015-08-18', '3 cucharadas', 'Tomar una cada 8 horas', 8, 132432),
@@ -103,7 +103,7 @@ INSERT INTO indications(id, comments, prescription_id) VALUES
 (6, 'Administrase via oral', 132432),
 (7, 'Consumir alimento antes de ingerir', 132432),
 (8, 'No mezclar con ninguna otra medicina', 231445),
-(9, 'No consumir alcohol despues de ingerir' 637452);
+(9, 'No consumir alcohol despues de ingerir', 637452);
 
 INSERT INTO labtest_catalog(id, exam, test) VALUES
 (1, 'Biometria Hematica Completa', 'Globulos blancos'),
