@@ -107,25 +107,26 @@ WHERE v.id=108 AND p.visit_id=v.id AND p.id=d.prescription_id AND d.medicine_id=
 *
 */
 
+
 SELECT
 	p.fname as 'Nombre',
 	p.lname as 'Apellido',
-	(DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), dob)), "%Y")+0 ) as 'Edad'
+	DATEDIFF(hour, dob, GETDATE())/8766 AS 'Edad'
 FROM patients p
-WHERE p.ssid = 183018;
+WHERE p.ssid = 123492;
 
 SELECT 
-	medicine_catalog.id,
-	medicine_catalog.generic_name, 
-	medicine_catalog.commercial_name, 
-	medicine_catalog.manufacturer,
-	COUNT(*)
-FROM prescriptions
-	JOIN visits ON prescriptions.visit_id = visits.id
-	JOIN patients ON patients.ssid = visits.patient_id
+	mc.generic_name, 
+	mc.commercial_name,
+	mc.manufacturer, 
+	COUNT(*) AS 'times_prescribed' 
+FROM visits 
+	JOIN prescriptions ON prescriptions.visit_id = visits.id 
 	JOIN details ON details.prescription_id = prescriptions.id
-	JOIN medicine_catalog ON medicine_catalog.id = details.medicine_id
-WHERE YEAR(prescriptions.date) = '2015' AND patients.ssid = 123492 GROUP BY medicine_catalog.id;
+	JOIN medicine_catalog mc ON details.medicine_id = mc.id
+WHERE patient_id = 123492 AND YEAR(prescriptions.date) = '2015'
+GROUP BY mc.generic_name, mc.commercial_name, mc.manufacturer;
+
 
 /* Finished Eugenio */
 /* ------------------------------------------------------------------------------------------------------------- */
