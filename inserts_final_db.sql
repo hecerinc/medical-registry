@@ -106,3 +106,10 @@ INSERT INTO results(id, parameter, value, min, max, comments, labtest_id) VALUES
 (8, 'Glucosa', 119, 70, 100, NULL, 4),
 (9, 'Plaquetas', 266, 140, 400, NULL, 4),
 (10, 'Hematocrito', 42.8, 41, 53, NULL, 4);
+
+
+
+INSERT INTO prescriptions(id, date, visit_id) VALUES(7, '2015-08-19', 108);
+INSERT INTO details(id, start_date, end_date, dosage, indications, medicine_id, prescription_id) 
+VALUES(6, '2015-08-22', '2015-09-01', '2 pastillas', 'Tomar 1 cada 12 horas', 7, 7);
+INSERT INTO indications(id, comments, prescription_id) VALUES (6, 'No dejar al alcance de los ninos', 7);
