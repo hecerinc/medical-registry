@@ -138,28 +138,30 @@ GROUP BY mc.generic_name, mc.commercial_name, mc.manufacturer;
 /*
 	El nombre del paciente(Orden Alfabetico), diagnostico del doctor, doctor encargado de la revision y la fecha en la cual se llevo a cabo la cita
 */
-select  p.fname as 'Nombre Paciente',
- p.lname as 'Apellido Paciente',
- v.comments as 'Diagnostico', 
- d.fname as 'Nombre Doctor',
- d.lname as 'Apellido Doctor', 
- v.date as 'Fecha'
-from patients p join visits v 
-on p.ssid = v.patient_id 
-join doctors d on v.doctor_id = d.id 
-order by p.fname ASC;
+SELECT
+	p.fname AS 'Nombre Paciente',
+	p.lname AS 'Apellido Paciente',
+	v.comments AS 'Diagnostico', 
+	CONCAT(d.fname, ' ', d.lname) AS 'Doctor',
+	v.date AS 'Fecha'
+FROM patients p 
+	JOIN visits v ON p.ssid = v.patient_id 
+	JOIN doctors d ON v.doctor_id = d.id 
+ORDER BY p.fname ASC;
  
-/*Muestra los medicamentos(Ordenados por precio), el precio
-de cada medicamento, la forma en la que deben usarse
-y la dosis */
+/*
+	Muestra los medicamentos(Ordenados por precio), el precio de cada medicamento, la forma en la que deben usarse y la dosis 
+*/
 
-select m.commercial_name as 'Medicamento', 
-m.unit_price as 'Precio',
-de.indications as 'Indicaciones',
-de.dosage as 'Dosis'
-from medicine_catalog m join details de 
-on m.id = de.medicine_id
-order by m.unit_price DESC;
+SELECT 
+	m.commercial_name as 'nombre comercial', 
+	m.generic_name AS 'Sal',
+	m.unit_price AS 'Precio',
+	de.indications AS 'Indicaciones',
+	de.dosage AS 'Dosis'
+FROM medicine_catalog m 
+	JOIN details de ON m.id = de.medicine_id
+ORDER BY m.unit_price DESC;
 
 /* Finished Hemkes */
 /* -----------------------------------------------------------------------------------------------------*/
@@ -170,44 +172,22 @@ order by m.unit_price DESC;
 /* Uriel */
 
 /*
-	Detalles de la ultima consulta de un paciente
-	Es importante para el doctor saber cuando fue la ultima consulta que tuvo con un paciente para verificar si la información que tiene sobre él aun es util o es necesario realizar nuevos examenes. Este reporte muestra los detalles de la utlima visita del paciente entre lo que se encuentra	la fecha de dicha visita, el peso y altura en ese momento, nombre y numero de seguro social y otros datos como el telefono y la direccion.
-*/
--- TODO no corre
-SELECT
-	MAX(visits.date) AS 'Ultima visita',
-	patients.ssid AS 'Numero de Seguro Social',
-	patients.fname AS 'Nombre del Paciente', 
-	patients.lname AS 'Apellido del Paciente',
-	patients.phone AS 'Telefono',
-	patients.address AS 'Direccion',
-	visits.height AS 'Altura',
-	visits.weight AS 'Peso',
-	visits.comments AS 'Comentarios',
-	doctors.fname AS 'Nombre Doctor',
-	doctors.lname AS 'Apellido Doctor'
-FROM patients 
-	INNER JOIN visits ON ssid = patient_id
-	INNER JOIN doctors ON doctors.id = doctor_id
-WHERE patients.fname = 'Martin' AND patients.lname = 'Murillo';
-
-
-/*
 	Visitas de un paciente ordenadas de la mas reciente a la mas antigua Es importante para el doctor estar al tanto de las consultas que ha tenido su paciente para comprobar como va progresando su estado. Esta consulta muestra todas las consultas que ha tenido un paciente en el hospital desde la mas reciente hasta la primera.
 */
--- No corre TODO
+SELECT 
+	ssid AS 'Numero de Seguro Social', 
+	CONCAT(fname,' ',lname) AS 'Nombre',
+	phone AS 'Telefono',
+	address AS 'Direccion'
+FROM patients 
+WHERE fname = 'Martin' AND lname = 'Murillo';
+
 SELECT
 	visits.date AS 'Fecha de visita',
-	patients.ssid AS 'Numero de Seguro Social',
-	patients.fname AS 'Nombre del Paciente', 
-	patients.lname AS 'Apellido del Paciente',
-	patients.phone AS 'Telefono',
-	patients.address AS 'Direccion',
 	visits.height AS 'Altura',
 	visits.weight AS 'Peso',
 	visits.comments AS 'Comentarios',
-	doctors.fname AS 'Nombre Doctor',
-	doctors.lname AS 'Apellido Doctor'
+	CONCAT(doctors.fname, ' ', doctors.lname) AS 'Doctor'
 FROM patients 
 	INNER JOIN visits ON ssid = patient_id 
 	INNER JOIN doctors ON doctors.id = doctor_id
