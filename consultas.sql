@@ -24,7 +24,6 @@ FROM patients
 	JOIN labtest_catalog ON labtests.test_id = labtest_catalog.id 
 WHERE ssid = 106960;
 
--- Resultados de un examen
 /*
 	Reporte de resultados de un examen específico
 
@@ -42,9 +41,17 @@ FROM labtests
 	JOIN patients ON patient_id = patients.ssid 
 WHERE labtests.id = 2;
 
-/* Eugenio */
 
---Catalogo de prescripciones con detalles e indicaciones para una visita en particular 
+
+/* Eugenio */
+/* ------------------------------------------------------------------------------------------------------------------ */
+/* 
+ *
+ *
+ *		QUERY # 2
+ *
+ *		Catalogo de prescripciones con detalles e indicaciones para una visita en particular 
+*/
 /* START QUERY --------------------------------------------------------------------------- */
 SELECT 
 	v.date as 'Fecha de Cita',
@@ -93,6 +100,13 @@ WHERE v.id=108 AND p.visit_id=v.id AND p.id=d.prescription_id AND d.medicine_id=
 
 
 
+/*
+*
+*
+*		QUERY 4
+*
+*/
+
 -- TODO
 -- RECETAS EN UN ANO
 -- Todas las prescripciones (recetas) (un paciente)
@@ -111,13 +125,15 @@ FROM patients
 	JOIN medicine_catalog ON details.medicine_id=  medicine_catalog.id
 WHERE fname='Martin' AND lname='Murillo';
 
-
+/* Finished Eugenio */
+/* ------------------------------------------------------------------------------------------------------------- */
 
 
 /* Hemkes */
-/*El nombre del paciente(Orden Alfabetico), diagnostico del 
-doctor, doctor encargado de la revision y la fecha 
-en la cual se llevo a cabo la cita
+/* -------------------------------------------------------------------------------------------------------------- */
+
+/*
+	El nombre del paciente(Orden Alfabetico), diagnostico del doctor, doctor encargado de la revision y la fecha en la cual se llevo a cabo la cita
 */
 select  p.fname as 'Nombre Paciente',
  p.lname as 'Apellido Paciente',
@@ -142,95 +158,90 @@ from medicine_catalog m join details de
 on m.id = de.medicine_id
 order by m.unit_price DESC;
 
+/* Finished Hemkes */
+/* -----------------------------------------------------------------------------------------------------*/
 
 
-select 'Examenes de laboratorio';
-select distinct lc.nombre, fecha
-from patients p join labtests l on p.id = l.idPaciente join results r
-on r.idLabTest = l.id join labtestcatalogs lc on lc.id = l.idLabtestcatalog
-where p.nombre = 'Juan 'and p.apellido = 'Perez';
-
-select doctors.fname as 'Nombre',
-doctors.lname as 'Apellido',
-details.id as 'ID de la prescripción',
-details.start_date as 'Fecha de inicio', 
-details.end_date as 'Fecha de fin',
-details.indications as 'Indicaciones'
-from doctors join visits on doctors.id = doctor_id join prescriptions on visits.id = visit_id join details on prescriptions.id = prescription_id
-where doctors.id = 7;
-
-
-
-SELECT fname as 'Nombre',
-lname as 'Apellido',
-dob as 'Fecha de Nacimiento',
-commercial_name as 'Medicamento',
-generic_name as 'Tipo',
-dosage as 'Dosis', 
-indications as 'Indicaciones'
-FROM patients JOIN visits ON patients.ssid= visits.patient_id
-JOIN prescriptions ON visits.id= prescriptions.visit_id
-JOIN details ON prescriptions.id= details.prescription_id
-JOIN medicine_catalog ON details.medicine_id= medicine_catalog.id
-WHERE fname='Martin' AND lname='Murillo';
 
 
 /* Uriel */
 
 /*
-Detalles de la ultima consulta de un paciente
-Es importante para el doctor saber cuando fue la ultima consulta que tuvo con un paciente para verificar si la información que tiene sobre él aun es util
-o es necesario realizar nuevos examenes. Este reporte muestra los detalles de la utlima visita del paciente entre lo que se encuentra
-la fecha de dicha visita, el peso y altura en ese momento, nombre y numero de seguro social y otros datos como el telefono y la direccion.
+	Detalles de la ultima consulta de un paciente
+	Es importante para el doctor saber cuando fue la ultima consulta que tuvo con un paciente para verificar si la información que tiene sobre él aun es util o es necesario realizar nuevos examenes. Este reporte muestra los detalles de la utlima visita del paciente entre lo que se encuentra	la fecha de dicha visita, el peso y altura en ese momento, nombre y numero de seguro social y otros datos como el telefono y la direccion.
 */
+-- TODO no corre
 SELECT
-MAX(visits.date) AS 'Ultima visita',
-patients.ssid AS 'Numero de Seguro Social',
-patients.fname AS 'Nombre del Paciente', 
-patients.lname AS 'Apellido del Paciente',
-patients.phone AS 'Telefono',
-patients.address AS 'Direccion',
-visits.height AS 'Altura',
-visits.weight AS 'Peso',
-visits.comments AS 'Comentarios',
-doctors.fname AS 'Nombre Doctor',
-doctors.lname AS 'Apellido Doctor'
-FROM patients INNER JOIN visits ON ssid = patient_id INNER JOIN doctors
-ON doctors.id = doctor_id
-WHERE patients.fname = 'Martin' AND patients.lname = 'Murillo'
+	MAX(visits.date) AS 'Ultima visita',
+	patients.ssid AS 'Numero de Seguro Social',
+	patients.fname AS 'Nombre del Paciente', 
+	patients.lname AS 'Apellido del Paciente',
+	patients.phone AS 'Telefono',
+	patients.address AS 'Direccion',
+	visits.height AS 'Altura',
+	visits.weight AS 'Peso',
+	visits.comments AS 'Comentarios',
+	doctors.fname AS 'Nombre Doctor',
+	doctors.lname AS 'Apellido Doctor'
+FROM patients 
+	INNER JOIN visits ON ssid = patient_id
+	INNER JOIN doctors ON doctors.id = doctor_id
+WHERE patients.fname = 'Martin' AND patients.lname = 'Murillo';
 
 
 /*
-Visitas de un paciente ordenadas de la mas reciente a la mas antigua
-Es importante para el doctor estar al tanto de las consultas que ha tenido su paciente para comprobar como va progresando su estado.
-Esta consulta muestra todas las consultas que ha tenido un paciente en el hospital desde la mas reciente hasta la primera.
+	Visitas de un paciente ordenadas de la mas reciente a la mas antigua Es importante para el doctor estar al tanto de las consultas que ha tenido su paciente para comprobar como va progresando su estado. Esta consulta muestra todas las consultas que ha tenido un paciente en el hospital desde la mas reciente hasta la primera.
 */
+-- No corre TODO
 SELECT
-visits.date AS 'Fecha de visita',
-patients.ssid AS 'Numero de Seguro Social',
-patients.fname AS 'Nombre del Paciente', 
-patients.lname AS 'Apellido del Paciente',
-patients.phone AS 'Telefono',
-patients.address AS 'Direccion',
-visits.height AS 'Altura',
-visits.weight AS 'Peso',
-visits.comments AS 'Comentarios',
-doctors.fname AS 'Nombre Doctor',
-doctors.lname AS 'Apellido Doctor'
-FROM patients INNER JOIN visits ON ssid = patient_id INNER JOIN doctors
-ON doctors.id = doctor_id
+	visits.date AS 'Fecha de visita',
+	patients.ssid AS 'Numero de Seguro Social',
+	patients.fname AS 'Nombre del Paciente', 
+	patients.lname AS 'Apellido del Paciente',
+	patients.phone AS 'Telefono',
+	patients.address AS 'Direccion',
+	visits.height AS 'Altura',
+	visits.weight AS 'Peso',
+	visits.comments AS 'Comentarios',
+	doctors.fname AS 'Nombre Doctor',
+	doctors.lname AS 'Apellido Doctor'
+FROM patients 
+	INNER JOIN visits ON ssid = patient_id 
+	INNER JOIN doctors ON doctors.id = doctor_id
 WHERE patients.fname = 'Martin' AND patients.lname = 'Murillo'
-ORDER BY visits.date DESC
+ORDER BY visits.date DESC;
+
+/*
+	Este reporte permite acceder a cada una de las prescripciones que ha hecho hasta el momento de la consulta, incluyendo todo los detalles de las mismas, los cuales son: nombre y apellidos del doctor, número de identificación de la prescripción, fecha en que se realizó, fecha en que finalizó y los detalles de las indicaciones. Este reporte en específico accede a las prescripciones del doctor Eugenio Rangel.
+*/
+SELECT 
+	doctors.fname AS 'Nombre',
+	doctors.lname AS 'Apellido',
+	details.id AS 'ID Prescripcion',
+	details.start_date AS 'Fecha de inicio', 
+	details.end_date AS 'Fecha de fin',
+	medicine_catalog.generic_name AS 'Medicina (nombre genérico)',
+	medicine_catalog.commercial_name AS 'Medicina (nombre comercial)',
+	details.dosage AS 'Dosis',
+	details.indications AS 'Indicaciones'
+FROM doctors 
+	JOIN visits ON doctors.id = doctor_id 
+	JOIN prescriptions ON visits.id = visit_id 
+	JOIN details ON prescriptions.id = prescription_id 
+	JOIN medicine_catalog ON medicine_id = medicine_catalog.id
+WHERE doctors.fname = 'Eugenio' AND doctors.lname = 'Rangel';
+
+/* Finished Uriel */
+/* -----------------------------------------------------------------------------------------------------*/
 
 
-
-
+/* Hector Ortiz */
 select  p.fname as 'Nombre Paciente',
 p.lname as 'Apellido Paciente',
 v.comments as 'Diagnostico', 
 d.fname as 'Nombre Doctor',
 d.lname as 'Apellido Doctor' 
 from patients p join visits v 
-on p.ssid = v.patient_id 
+ON p.ssid = v.patient_id 
 join doctors d on v.doctor_id = d.id 
 WHERE v.date = getdate();
