@@ -107,23 +107,24 @@ WHERE v.id=108 AND p.visit_id=v.id AND p.id=d.prescription_id AND d.medicine_id=
 *
 */
 
--- TODO
--- RECETAS EN UN ANO
--- Todas las prescripciones (recetas) (un paciente)
+SELECT
+	p.fname as 'Nombre',
+	p.lname as 'Apellido',
+	(DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), dob)), "%Y")+0 ) as 'Edad'
+FROM patients p
+WHERE p.ssid = 183018;
+
 SELECT 
-	fname as 'Nombre',
-	lname as 'Apellido',
-	dob as 'Fecha de Nacimiento',
-	commercial_name as 'Medicamento',
-	generic_name as 'Tipo',
-	dosage as 'Dosis', 
-	indications as 'Indicaciones'
-FROM patients 
-	JOIN visits ON patients.ssid = visits.patient_id
-	JOIN prescriptions ON visits.id = prescriptions.visit_id
-	JOIN details ON prescriptions.id =  details.prescription_id
-	JOIN medicine_catalog ON details.medicine_id=  medicine_catalog.id
-WHERE fname='Martin' AND lname='Murillo';
+	medicine_catalog.generic_name, 
+	medicine_catalog.commercial_name, 
+	medicine_catalog.manufacturer,
+	COUNT(*)
+FROM prescriptions
+	JOIN visits ON prescriptions.visit_id = visits.id
+	JOIN patients ON patients.ssid = visits.patient_id
+	JOIN details ON details.prescription_id = prescriptions.id
+	JOIN medicine_catalog ON medicine_catalog.id = details.medicine_id
+WHERE YEAR(prescriptions.date) = '2015' AND patients.ssid = 183018 GROUP BY medicine_catalog.generic_name;
 
 /* Finished Eugenio */
 /* ------------------------------------------------------------------------------------------------------------- */
