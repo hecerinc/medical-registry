@@ -115,6 +115,7 @@ FROM patients p
 WHERE p.ssid = 183018;
 
 SELECT 
+	medicine_catalog.id,
 	medicine_catalog.generic_name, 
 	medicine_catalog.commercial_name, 
 	medicine_catalog.manufacturer,
@@ -124,7 +125,7 @@ FROM prescriptions
 	JOIN patients ON patients.ssid = visits.patient_id
 	JOIN details ON details.prescription_id = prescriptions.id
 	JOIN medicine_catalog ON medicine_catalog.id = details.medicine_id
-WHERE YEAR(prescriptions.date) = '2015' AND patients.ssid = 183018 GROUP BY medicine_catalog.generic_name;
+WHERE YEAR(prescriptions.date) = '2015' AND patients.ssid = 123492 GROUP BY medicine_catalog.id;
 
 /* Finished Eugenio */
 /* ------------------------------------------------------------------------------------------------------------- */
