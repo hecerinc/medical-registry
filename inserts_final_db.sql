@@ -12,18 +12,18 @@ INSERT INTO doctors(id, fname, lname, cedula, address, office_location, phone, f
  
 /* Patient */
 INSERT INTO patients(ssid, fname, lname, sex, dob, address, phone) VALUES
-(183018031, 'Martin', 'Murillo','M', '1980-02-23','Main Street 253', '81190817508'),
-(802850253, 'Luis', 'Romo','M', '1980-02-23','Revolution 863',  '81190817508'),
-(280580223, 'Gabriela', 'Navarro', 'F', '1995-08-17','Cumbres 103', '81190817508'),
-(106960860, 'Edgar', 'Alanis','M', '1980-02-23', 'Columbus 962','81190817508'),
-(168028492, 'Ninfa', 'Garza','F', '1995-08-17','Country 524', '81190817508'),
-(574835467, 'Ricardo', 'Froto','M', '1978-03-12', 'Colonia Nevada 1830','8113245869'),
-(493049584, 'Carla', 'Canseco', 'F', '1992-02-22', 'Lomas del Mirador 219','814549695'),
-(432594832, 'Valeria', 'Martinez', 'F', '1992-04-04', 'Lazaro Cardena 4000','8115772349'),
-(384930203, 'Emilia', 'Guzman', 'F', '1988-05-10', 'Sierra Nevada 45','8113485211'),
-(438293492, 'Carolina', 'Marcos', 'F', '1974-12-12', 'Palo Blanco 82','815644392'),
-(123492334, 'Pedro', 'Iga', 'M', '1993-01-23', 'San Agustin 432','8145334289'),
-(198463211, 'Raul', 'Vela', 'M', '1969-06-09', 'Bosques del Valle 103','8143258639');
+(183018, 'Martin', 'Murillo','M', '1980-02-23','Main Street 253', '81190817508'),
+(802850, 'Luis', 'Romo','M', '1980-02-23','Revolution 863',  '81190817508'),
+(280580, 'Gabriela', 'Navarro', 'F', '1995-08-17','Cumbres 103', '81190817508'),
+(106960, 'Edgar', 'Alanis','M', '1980-02-23', 'Columbus 962','81190817508'),
+(168028, 'Ninfa', 'Garza','F', '1995-08-17','Country 524', '81190817508'),
+(574835, 'Ricardo', 'Froto','M', '1978-03-12', 'Colonia Nevada 1830','8113245869'),
+(493049, 'Carla', 'Canseco', 'F', '1992-02-22', 'Lomas del Mirador 219','814549695'),
+(432594, 'Valeria', 'Martinez', 'F', '1992-04-04', 'Lazaro Cardena 4000','8115772349'),
+(384930, 'Emilia', 'Guzman', 'F', '1988-05-10', 'Sierra Nevada 45','8113485211'),
+(438293, 'Carolina', 'Marcos', 'F', '1974-12-12', 'Palo Blanco 82','815644392'),
+(123492, 'Pedro', 'Iga', 'M', '1993-01-23', 'San Agustin 432','8145334289'),
+(198463, 'Raul', 'Vela', 'M', '1969-06-09', 'Bosques del Valle 103','8143258639');
  
  
 /*  Medicina  */
@@ -53,17 +53,17 @@ INSERT INTO patients(ssid, fname, lname, sex, dob, address, phone) VALUES
 INSERT INTO visits(id, date, comments, weight, height, patient_id, doctor_id) VALUES
 (108, '2015-08-19', 'El paciente tiene dolor de cabeza', 60.2, 1.67, 183018, 12),
 (186, '2015-09-11', 'El paciente sufre de dolor de espalda', 60.2, 1.67, 802850, 45),
-(067, '2015-04-20', 'La paciente sufre de alergias', 60.2, 1.67, 280580, 07),
-(003, '2014-12-22', 'El paciente tiene la garganta inflamada', 60.2, 1.67, 106960, 01),
-(099, '2015-07-07', 'La paciente tiene la nariz tapada', 60.2, 1.67, 168028, 99);
+(67, '2015-04-20', 'La paciente sufre de alergias', 60.2, 1.67, 280580, 7),
+(3, '2014-12-22', 'El paciente tiene la garganta inflamada', 60.2, 1.67, 106960, 1),
+(99, '2015-07-07', 'La paciente tiene la nariz tapada', 60.2, 1.67, 168028, 99);
 
 /* Prescription */
 INSERT INTO prescriptions(id, DATE, visit_id) VALUES
 (564738,'2015-08-19', 108),
 (324527,'2015-09-11', 186),
-(897667,'2015-04-20', 067),
-(213389,'2014-12-22', 003),
-(463748,'2015-07-07', 099);
+(897667,'2015-04-20', 67),
+(213389,'2014-12-22', 3),
+(463748,'2015-07-07', 99);
 
 /* Prescription Details */
 INSERT INTO details(id, start_date, end_date, dosage, indications, medicine_id, prescription_id) VALUES
