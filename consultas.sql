@@ -8,6 +8,62 @@
 #	3. Create pull request
 # ---------------------------------------------
 
+/*
+*
+*
+* 	QUERY 1
+*
+*	EHR de un paciente dado el nombre
+*  -------------------------------------------------------------------------------------------------------------------------
+*/
+
+SELECT 'Paciente';
+SELECT 
+	ssid, 
+	CONCAT(fname, ' ', lname) AS 'Nombre', 
+	sex, 
+	DATEDIFF(hour, dob, GETDATE())/8766 AS 'Edad',
+	address,
+	phone
+FROM patients
+WHERE fname = 'Pedro' AND lname = 'Iga';
+
+
+
+SELECT 'Consultas';
+SELECT 
+	date, weight, height, comments AS 'Motivo', 
+	CONCAT('Dr. ', doctors.fname, ' ', doctors.lname) AS 'Doctor'
+FROM visits 
+	JOIN doctors ON doctors.id = visits.doctor_id
+WHERE visits.patient_id = 123492;
+
+
+
+SELECT 'Examenes del paciente';
+SELECT date, exam
+FROM patients 
+	JOIN labtests ON patients.ssid = labtests.patient_id 
+	JOIN labtest_catalog ON labtests.test_id = labtest_catalog.id 
+WHERE ssid = 106960;
+
+
+
+SELECT 'Prescripciones';
+SELECT 
+	mc.generic_name, 
+	mc.commercial_name,
+	mc.manufacturer, 
+	COUNT(*) AS 'times_prescribed' 
+FROM visits 
+	JOIN prescriptions ON prescriptions.visit_id = visits.id 
+	JOIN details ON details.prescription_id = prescriptions.id
+	JOIN medicine_catalog mc ON details.medicine_id = mc.id
+WHERE patient_id = 123492 
+GROUP BY mc.generic_name, mc.commercial_name, mc.manufacturer;
+
+/* END QUERY */
+/* ---------------------------------------------------------------------------------------------------------------------*/
 
 /* Hector */
 /*
@@ -17,7 +73,13 @@
 	Este listado es pertinenete para el doctor puesto que puede ver los exámenes que un paciente se ha realizado lo cual puede ayudar a diagnosticar una condición
 	Dependiendo del mal que lo aqueja, puede ver el tipo de examen que arrojaría resultados que pudieran indicar una condición
 */
-SELECT CONCAT(fname, ' ', lname) AS 'Nombre' FROM patients WHERE ssid = 106960;
+SELECT 'Examenes del paciente'
+SELECT 
+	ssid AS 'Seguro social', 
+	CONCAT(fname, ' ', lname) AS 'Nombre',
+	address,
+	phone
+FROM patients WHERE ssid = 106960;
 SELECT date, exam
 FROM patients 
 	JOIN labtests ON patients.ssid = labtests.patient_id 
@@ -71,28 +133,35 @@ WHERE v.id=108
 ORDER BY v.date ASC;
 
 --Despliega una receta con el id de una visita
-SELECT d.fname as 'Nombre Dr', d.lname as 'Apellido', cedula as 'Cédula Profesional', office_location, field
+SELECT 
+	d.fname as 'Nombre Dr', 
+	d.lname as 'Apellido', 
+	cedula as 'Cédula Profesional', 
+	office_location, 
+	field
 FROM doctors d, patients p, visits v
 WHERE v.id=108 AND d.id=v.doctor_id AND p.ssid=v.patient_id;
 
-SELECT fname as 'Nombre', 
-lname as 'Apellido', 
-(DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), dob)), "%Y")+0 ) as 'Edad',
-weight as 'Peso', 
-height as 'Estatura', 
-v.date as 'Fecha',
-v.comments as 'Diagnostico'
+SELECT 
+	fname as 'Nombre', 
+	lname as 'Apellido', 
+	(DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), dob)), "%Y")+0 ) as 'Edad',
+	weight as 'Peso', 
+	height as 'Estatura', 
+	v.date as 'Fecha',
+	v.comments as 'Diagnostico'
 FROM patients p, visits v
 WHERE v.id=108 AND p.ssid=v.patient_id;
 
-SELECT p.id as 'Prescription #',
-m.generic_name as 'Nombre',
-m.commercial_name as 'Commercial', 
-d.dosage as 'dosis', 
-d.indications as 'Indicaciones' ,
-i.comments as 'Commentarios add',
-d.start_date as 'Inicio' ,
-d.end_date as 'fin'
+SELECT 
+	p.id as 'Prescription #',
+	m.generic_name as 'Nombre',
+	m.commercial_name as 'Commercial', 
+	d.dosage as 'dosis', 
+	d.indications as 'Indicaciones' ,
+	i.comments as 'Commentarios add',
+	d.start_date as 'Inicio' ,
+	d.end_date as 'fin'
 FROM prescriptions p, details d, medicine_catalog m, indications i, visits v
 WHERE v.id=108 AND p.visit_id=v.id AND p.id=d.prescription_id AND d.medicine_id= m.id AND p.id=i.prescription_id;
 
@@ -105,6 +174,7 @@ WHERE v.id=108 AND p.visit_id=v.id AND p.id=d.prescription_id AND d.medicine_id=
 *
 *		QUERY 4
 *
+*		Prescripciones de un paciente en un ano
 */
 
 
@@ -154,13 +224,10 @@ ORDER BY p.fname ASC;
 */
 
 SELECT 
-	m.commercial_name as 'nombre comercial', 
+	m.commercial_name as 'Nombre Comercial', 
 	m.generic_name AS 'Sal',
 	m.unit_price AS 'Precio',
-	de.indications AS 'Indicaciones',
-	de.dosage AS 'Dosis'
 FROM medicine_catalog m 
-	JOIN details de ON m.id = de.medicine_id
 ORDER BY m.unit_price DESC;
 
 /* Finished Hemkes */
@@ -216,15 +283,3 @@ WHERE doctors.fname = 'Eugenio' AND doctors.lname = 'Rangel';
 
 /* Finished Uriel */
 /* -----------------------------------------------------------------------------------------------------*/
-
-
-/* Hector Ortiz */
-select  p.fname as 'Nombre Paciente',
-p.lname as 'Apellido Paciente',
-v.comments as 'Diagnostico', 
-d.fname as 'Nombre Doctor',
-d.lname as 'Apellido Doctor' 
-from patients p join visits v 
-ON p.ssid = v.patient_id 
-join doctors d on v.doctor_id = d.id 
-WHERE v.date = getdate();
