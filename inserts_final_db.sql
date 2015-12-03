@@ -75,8 +75,7 @@ INSERT INTO prescriptions(id, DATE, visit_id) VALUES
 (291774,'2015-03-21', 75),
 (132432,'2015-08-28', 87),
 (823123,'2014-02-15', 12),
-(637452,'2015-11-08', 31),
-(637453,'2015-11-08', 31);
+(637452,'2015-11-08', 31);
 
 /* Prescription Details */
 INSERT INTO details(id, start_date, end_date, dosage, indications, medicine_id, prescription_id) VALUES
