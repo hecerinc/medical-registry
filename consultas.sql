@@ -217,7 +217,7 @@ SELECT
 FROM patients p 
 	JOIN visits v ON p.ssid = v.patient_id 
 	JOIN doctors d ON v.doctor_id = d.id 
-ORDER BY p.fname ASC;
+ORDER BY v.date DESC;
  
 /*
 	Muestra los medicamentos(Ordenados por precio), el precio de cada medicamento, la forma en la que deben usarse y la dosis 
