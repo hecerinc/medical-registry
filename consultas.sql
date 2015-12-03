@@ -73,7 +73,7 @@ GROUP BY mc.generic_name, mc.commercial_name, mc.manufacturer;
 	Este listado es pertinenete para el doctor puesto que puede ver los exámenes que un paciente se ha realizado lo cual puede ayudar a diagnosticar una condición
 	Dependiendo del mal que lo aqueja, puede ver el tipo de examen que arrojaría resultados que pudieran indicar una condición
 */
-SELECT 'Examenes del paciente'
+SELECT 'Examenes del paciente';
 SELECT 
 	ssid AS 'Seguro social', 
 	CONCAT(fname, ' ', lname) AS 'Nombre',
